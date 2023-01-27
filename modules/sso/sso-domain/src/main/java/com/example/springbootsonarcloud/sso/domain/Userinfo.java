@@ -7,4 +7,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Userinfo {
     private String uid;
+    private FullName fullName;
 }
