@@ -25,6 +25,8 @@ class UserinfoApiIntegrationTest {
                 .isOk()
                 .expectBody()
                 .jsonPath("$.uid")
-                .isNotEmpty();
+                .isNotEmpty()
+                .jsonPath("$.name")
+                .isEqualTo("John");
     }
 }
