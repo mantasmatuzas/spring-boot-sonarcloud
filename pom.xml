@@ -92,13 +92,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <formats>
-                        <format>XML</format>
-                    </formats>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
