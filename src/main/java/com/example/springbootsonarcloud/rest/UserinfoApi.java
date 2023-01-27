@@ -12,14 +12,14 @@ import static com.example.springbootsonarcloud.service.UserinfoQueryService.GetU
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/userinfo")
+@RequestMapping("/sso/userinfo")
 public class UserinfoApi {
 
     private final UserinfoQueryService userinfoQueryService;
 
     @GetMapping
     public GetUserinfoResponse getUserinfo() {
-        var uid = UUID.randomUUID().toString();
-        return userinfoQueryService.getUserinfo(uid);
+        var sub = UUID.randomUUID().toString();
+        return userinfoQueryService.getUserinfo(sub);
     }
 }

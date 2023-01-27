@@ -1,5 +1,6 @@
 package com.example.springbootsonarcloud.service;
 
+import com.example.springbootsonarcloud.domain.FullName;
 import com.example.springbootsonarcloud.domain.User;
 import com.example.springbootsonarcloud.domain.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -23,15 +24,17 @@ class UserinfoQueryServiceTest {
 
     @Test
     void shouldReturnUserinfo() {
-        var uid = "uid";
-        var name = "John";
-        var user = new User().setUid(uid).setName(name);
+        var sub = "sub";
+        var firstName = "John";
+        var lastName = "Doe";
+        var fullName = new FullName(firstName, lastName);
+        var user = new User().setUid(sub).setFullName(fullName);
 
-        doReturn(user).when(userRepository).getUserByUid(any());
+        doReturn(user).when(userRepository).getByUid(any());
 
-        var response = target.getUserinfo(uid);
+        var response = target.getUserinfo(sub);
 
-        assertThat(response.getUid()).isEqualTo(uid);
-        assertThat(response.getName()).isEqualTo(name);
+        assertThat(response.getSub()).isEqualTo(sub);
+        assertThat(response.getName()).isEqualTo(fullName.asString());
     }
 }

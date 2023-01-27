@@ -27,13 +27,13 @@ class UserinfoApiTest {
     void shouldReturnUserinfo() {
         var uid = "uid";
         var name = "John";
-        var userinfoResponse = GetUserinfoResponse.builder().uid(uid).name(name).build();
+        var userinfoResponse = GetUserinfoResponse.builder().sub(uid).name(name).build();
 
         doReturn(userinfoResponse).when(userinfoQueryService).getUserinfo(any());
 
         var response = target.getUserinfo();
 
-        assertThat(response.getUid()).isEqualTo(uid);
+        assertThat(response.getSub()).isEqualTo(uid);
         assertThat(response.getName()).isEqualTo(name);
 
         verify(userinfoQueryService).getUserinfo(anyString());

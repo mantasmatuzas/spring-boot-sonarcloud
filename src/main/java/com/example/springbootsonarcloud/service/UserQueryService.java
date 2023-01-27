@@ -9,24 +9,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserinfoQueryService {
+public class UserQueryService {
 
     private final UserRepository userRepository;
 
-    public GetUserinfoResponse getUserinfo(String sub) {
-        var user = userRepository.getByUid(sub);
-        var fullName = user.getFullName().asString();
-        return GetUserinfoResponse.builder().sub(user.getUid()).name(fullName).build();
+    public GetUserResponse getUser(String uid) {
+        var user = userRepository.getByUid(uid);
+        var fullName = user.getFullName();
+        return GetUserResponse.builder().uid(uid).firstName(fullName.firstName()).lastName(fullName.lastName()).build();
     }
 
     @Value
     @Builder
-    public static class GetUserinfoResponse {
+    public static class GetUserResponse {
+        @NonNull
+        String uid;
 
         @NonNull
-        String sub;
+        String firstName;
 
         @NonNull
-        String name;
+        String lastName;
     }
 }

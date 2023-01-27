@@ -7,5 +7,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class User {
     private String uid;
-    private String name;
+    private FullName fullName;
 }

@@ -9,7 +9,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-class UserinfoApiIntegrationTest {
+class UserApiIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
@@ -18,15 +18,17 @@ class UserinfoApiIntegrationTest {
     @Test
     void shouldReturnUserinfo() {
         webTestClient.get()
-                .uri("/sso/userinfo")
+                .uri("/user/current")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus()
                 .isOk()
                 .expectBody()
-                .jsonPath("$.sub")
+                .jsonPath("$.uid")
                 .isNotEmpty()
-                .jsonPath("$.name")
-                .isEqualTo("John Doe");
+                .jsonPath("$.firstName")
+                .isEqualTo("John")
+                .jsonPath("$.lastName")
+                .isEqualTo("Doe");
     }
 }
