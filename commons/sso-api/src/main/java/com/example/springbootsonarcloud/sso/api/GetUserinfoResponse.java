@@ -8,5 +8,4 @@ import lombok.Value;
 @Builder
 public class GetUserinfoResponse {
     @NonNull String sub;
-    @NonNull String name;
 }

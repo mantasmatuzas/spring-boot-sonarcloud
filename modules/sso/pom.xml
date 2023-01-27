@@ -11,7 +11,10 @@
 
     <artifactId>sso</artifactId>
     <packaging>pom</packaging>
+
     <modules>
+        <module>sso-application</module>
         <module>sso-domain</module>
+        <module>sso-infrastructure</module>
     </modules>
 </project>
