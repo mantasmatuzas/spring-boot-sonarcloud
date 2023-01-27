@@ -1,6 +1,5 @@
 package com.example.springbootsonarcloud.rest;
 
-import com.example.springbootsonarcloud.rest.UserinfoApi;
 import com.example.springbootsonarcloud.service.UserinfoQueryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,13 +26,15 @@ class UserinfoApiTest {
     @Test
     void shouldReturnUserinfo() {
         var uid = "uid";
-        var userinfoResponse = GetUserinfoResponse.builder().uid(uid).build();
+        var name = "John";
+        var userinfoResponse = GetUserinfoResponse.builder().uid(uid).name(name).build();
 
         doReturn(userinfoResponse).when(userinfoQueryService).getUserinfo(any());
 
         var response = target.getUserinfo();
 
         assertThat(response.getUid()).isEqualTo(uid);
+        assertThat(response.getName()).isEqualTo(name);
 
         verify(userinfoQueryService).getUserinfo(anyString());
     }
