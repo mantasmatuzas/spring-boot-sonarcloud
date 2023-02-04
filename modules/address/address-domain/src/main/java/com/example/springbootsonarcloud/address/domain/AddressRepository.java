@@ -1,5 +1,7 @@
 package com.example.springbootsonarcloud.address.domain;
 
-public interface AddressRepository {
-    Address getByUid(String uid);
+import java.util.Optional;
+
+public abstract class AddressRepository {
+    public abstract Optional<Address> getByUid(String uid);
 }
