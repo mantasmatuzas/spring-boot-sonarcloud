@@ -10,8 +10,10 @@
         <module name="sso-api" />
         <module name="address-application" />
         <module name="address-infrastructure" />
+        <module name="shared" />
         <module name="sso-application" />
         <module name="address-domain" />
+        <module name="database" />
         <module name="application" />
         <module name="address-api" />
         <module name="sso-domain" />
@@ -29,6 +31,8 @@
       <module name="address-domain" options="-parameters" />
       <module name="address-infrastructure" options="-parameters" />
       <module name="application" options="-parameters" />
+      <module name="database" options="-parameters" />
+      <module name="shared" options="-parameters" />
       <module name="spring-boot-sonarcloud" options="" />
       <module name="sso-api" options="-parameters" />
       <module name="sso-application" options="-parameters" />
